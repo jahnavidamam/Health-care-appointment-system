@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Healthcare Appointment System</title>
+
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="logo">
+            HealthCare
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#login">Login</a>
+        </nav>
+    </header>
+
+
+    <!-- HOME -->
+
+    <section id="home" class="hero">
+
+        <h1>Healthcare Appointment System</h1>
+
+        <p>
+            Book your doctor appointment easily and quickly.
+        </p>
+
+        <button onclick="showSection('login')">
+            Get Started
+        </button>
+
+    </section>
+
+
+    <!-- BUSINESS SYSTEM -->
+
+    <section class="about">
+
+        <h2>Our Healthcare System</h2>
+
+        <p>
+            Our Healthcare Appointment System provides an easy
+            online platform for patients to book appointments
+            with doctors.
+        </p>
+
+        <div class="modules">
+
+            <div class="module-card">
+
+                <h3>Admin Module</h3>
+
+                <p>
+                    Admin can manage doctors, view users,
+                    manage appointments and cancel appointments.
+                </p>
+
+            </div>
+
+
+            <div class="module-card">
+
+                <h3>User Module</h3>
+
+                <p>
+                    Users can view doctors, book appointments,
+                    view appointments and cancel appointments.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DOCTORS -->
+
+    <section id="doctors">
+
+        <h2>Available Doctors</h2>
+
+        <div id="doctorList" class="doctor-container">
+
+        </div>
+
+    </section>
+
+
+    <!-- LOGIN -->
+
+    <section id="login" class="login-section">
+
+        <h2>Login</h2>
+
+        <div class="login-box">
+
+            <label>Select Module</label>
+
+            <select id="role">
+
+                <option value="user">
+                    User Module
+                </option>
+
+                <option value="admin">
+                    Admin Module
+                </option>
+
+            </select>
+
+
+            <label>Username</label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+
+            <button onclick="login()">
+                Login
+            </button>
+
+
+            <p id="loginMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- USER MODULE -->
+
+    <section id="userModule" class="dashboard">
+
+        <h2>User Module</h2>
+
+        <p class="welcome">
+            Welcome to the User Dashboard
+        </p>
+
+
+        <!-- BOOK APPOINTMENT -->
+
+        <div class="form-box">
+
+            <h3>Book Appointment</h3>
+
+
+            <label>Patient Name</label>
+
+            <input
+                type="text"
+                id="patientName"
+                placeholder="Enter patient name"
+            >
+
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="patientEmail"
+                placeholder="Enter email"
+            >
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="text"
+                id="patientPhone"
+                placeholder="Enter phone number"
+            >
+
+
+            <label>Select Doctor</label>
+
+            <select id="appointmentDoctor">
+
+            </select>
+
+
+            <label>Appointment Date</label>
+
+            <input
+                type="date"
+                id="appointmentDate"
+            >
+
+
+            <label>Appointment Time</label>
+
+            <input
+                type="time"
+                id="appointmentTime"
+            >
+
+
+            <label>Reason</label>
+
+            <textarea
+                id="reason"
+                placeholder="Enter reason for visit">
+            </textarea>
+
+
+            <button onclick="bookAppointment()">
+                Book Appointment
+            </button>
+
+        </div>
+
+
+        <!-- USER APPOINTMENTS -->
+
+        <div class="table-box">
+
+            <h3>My Appointments</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="userAppointments">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADMIN MODULE -->
+
+    <section id="adminModule" class="dashboard">
+
+        <h2>Admin Module</h2>
+
+        <p class="welcome">
+            Welcome to the Admin Dashboard
+        </p>
+
+
+        <!-- ADMIN STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <h3 id="doctorCount">
+                    0
+                </h3>
+
+                <p>
+                    Total Doctors
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3 id="appointmentCount">
+                    0
+                </h3>
+
+                <p>
+                    Total Appointments
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADD DOCTOR -->
+
+        <div class="form-box">
+
+            <h3>Add Doctor</h3>
+
+
+            <label>Doctor Name</label>
+
+            <input
+                type="text"
+                id="doctorName"
+                placeholder="Enter doctor name"
+            >
+
+
+            <label>Specialization</label>
+
+            <input
+                type="text"
+                id="specialization"
+                placeholder="Enter specialization"
+            >
+
+
+            <label>Experience</label>
+
+            <input
+                type="text"
+                id="experience"
+                placeholder="Example: 10 Years"
+            >
+
+
+            <button onclick="addDoctor()">
+                Add Doctor
+            </button>
+
+        </div>
+
+
+        <!-- ADMIN DOCTOR LIST -->
+
+        <div class="table-box">
+
+            <h3>Manage Doctors</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Doctor</th>
+                        <th>Specialization</th>
+                        <th>Experience</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="adminDoctors">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- ADMIN APPOINTMENTS -->
+
+        <div class="table-box">
+
+            <h3>Manage Appointments</h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patient</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="adminAppointments">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Healthcare Appointment System
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
